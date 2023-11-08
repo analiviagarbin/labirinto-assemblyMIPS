@@ -9,13 +9,13 @@
     boasvindas: .asciiz "Bem-vindo ao Labirinto!\n"
     vitoria: .asciiz "Parabéns! Você finalizou o labirinto\n"
     guia: .asciiz "Você deve chegar até a saída (S) a partir da entrada (E).\n"
-    mapa: .asciiz "XXXXXXXXXX\nE  XXXXXXX\nXX XXXXXXX\nXX XXXXXXX\nXX XXXXXXX\nXX XXXXXXX\nXX XXXXXXX\nXX XXXXXXX\nXX XXXXXXX\nXX     XXX\nXXXXXX   S\nXXXXXXXXXX\n"
+    mapa: .asciiz "XEXXXXXXXXXXXXXXXXXXXXXXXXXXXX\nX XX      X           X      X\nX    X XX X XXXXXXXXX   XXXX X\nXXXXXX  X X X       X XX     X\nX    XX X X XXXXX XXX X  XXXXX\nX XX XX X X     X X   XXXX   X\nX X  XX X XXXXX X X XXXX   X S\nX XXXXX X XXXXX X X XXXX XXXXX\nX       X         X          X\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
     guia1: .asciiz "Entradas aceitas são: C (cima), B (baixo), D (direita) e E (esquerda).\n"
     guia2: .asciiz "Você deve inserir o caminho completo e teclar Enter para ser validado.\n"
     guia3: .asciiz "Lembre-se! O jogo é case-sensitive, responda apenas com letras maiúsculas.\n"
-    caminho_correto: .asciiz "DDBBBBBBBBDDDDBDDD\n"
+    caminho_correto: .asciiz "BBDDDCDDDDDBBBBBBBDDDDDDCCCEEEECCCCDDDDDDDDDDBBBBEEBBBDDDDDCCDDCDDBD"
     erro: .asciiz "Entrada inválida! Tente novamente.\n"
-    input_buffer: .space 20 # Tamanho máximo da entrada do jogador
+    input_buffer: .space 80 # Tamanho máximo da entrada do jogador
 
 .text
 
@@ -45,7 +45,7 @@ main:
 receberentrada:
     li $v0, 8
     la $a0, input_buffer
-    li $a1, 20
+    li $a1, 80
     syscall
 
     # Verificar a entrada do jogador em relação ao caminho correto
